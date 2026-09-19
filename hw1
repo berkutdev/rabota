@@ -1,1 +1,40 @@
+#include <iostream>
 
+using namespace std;
+
+int main() {
+    int points;
+
+    cout << "Vvedit kilkist baliv: ";
+    cin >> points;
+
+    if (points < 0 || points > 100) {
+        cout << "Pomylka: kilkist baliv povynna buty vid 0 do 100." << endl;
+    }
+    else if (points >= 90) {
+        cout << "Otsinka: A" << endl;
+        cout << "Rezultat: kruto" << endl;
+    }
+    else if (points >= 82) {
+        cout << "Otsinka: B" << endl;
+        cout << "Rezultat: ochen xoposho" << endl;
+    }
+    else if (points >= 75) {
+        cout << "Otsinka: C" << endl;
+        cout << "Rezultat: xoposho" << endl;
+    }
+    else if (points >= 69) {
+        cout << "Otsinka: D" << endl;
+        cout << "Rezultat: zadovilno" << endl;
+    }
+    else if (points >= 60) {
+        cout << "Otsinka: E" << endl;
+        cout << "Rezultat: dostatochno" << endl;
+    }
+    else if (points >= 35) {
+        cout << "Otsinka: FX" << endl;
+        cout << "Rezultat: nezadovilno, povtorno skladite" << endl;
+    }
+    else {
+        cout << "otsinka: F" << endl;
+        cout << "Rezultat: nezadovilno" << endl;
