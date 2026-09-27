@@ -1,40 +1,120 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
-int main() {
-    int points;
+class Student
+{
+private:
+    string name;
+    string group;
+    string speciality;
 
-    cout << "Vvedit kilkist baliv: ";
-    cin >> points;
+    const int ID;
+    const string adress;
 
-    if (points < 0 || points > 100) {
-        cout << "Pomylka: kilkist baliv povynna buty vid 0 do 100." << endl;
+public:
+   
+    Student() : ID(0), adress("")
+    {
+        name = "";
+        group = "";
+        speciality = "";
     }
-    else if (points >= 90) {
-        cout << "Otsinka: A" << endl;
-        cout << "Rezultat: kruto" << endl;
+
+    
+    Student(string n, string g, string s, int id, string a)
+        : ID(id), adress(a)
+    {
+        name = n;
+        group = g;
+        speciality = s;
     }
-    else if (points >= 82) {
-        cout << "Otsinka: B" << endl;
-        cout << "Rezultat: ochen xoposho" << endl;
+
+
+    string getName()
+    {
+        return name;
     }
-    else if (points >= 75) {
-        cout << "Otsinka: C" << endl;
-        cout << "Rezultat: xoposho" << endl;
+
+    string getGroup()
+    {
+        return group;
     }
-    else if (points >= 69) {
-        cout << "Otsinka: D" << endl;
-        cout << "Rezultat: zadovilno" << endl;
+
+    string getSpeciality()
+    {
+        return speciality;
     }
-    else if (points >= 60) {
-        cout << "Otsinka: E" << endl;
-        cout << "Rezultat: dostatochno" << endl;
+
+    int getID()
+    {
+        return ID;
     }
-    else if (points >= 35) {
-        cout << "Otsinka: FX" << endl;
-        cout << "Rezultat: nezadovilno, povtorno skladite" << endl;
+
+    string getAdress()
+    {
+        return adress;
     }
-    else {
-        cout << "otsinka: F" << endl;
-        cout << "Rezultat: nezadovilno" << endl;
+
+
+    void setName(string n)
+    {
+        name = n;
+    }
+
+    void setGroup(string g)
+    {
+        group = g;
+    }
+
+    void setSpeciality(string s)
+    {
+        speciality = s;
+    }
+
+    
+    void printStudent()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Group: " << group << endl;
+        cout << "Speciality: " << speciality << endl;
+        cout << "ID: " << ID << endl;
+        cout << "Adress: " << adress << endl;
+    }
+
+    
+    void changeGroup(string newGroup)
+    {
+        group = newGroup;
+    }
+};
+
+int main()
+{
+    Student student1;
+
+    Student student2(
+        "",
+        "",
+        "",
+        ,
+        ""
+    );
+
+    cout << "Student 1:" << endl;
+    student1.printStudent();
+
+    cout << endl;
+
+    cout << "Student 2:" << endl;
+    student2.printStudent();
+
+    cout << endl;
+
+    student2.changeGroup("IT-102");
+
+    cout << "After changing group:" << endl;
+    student2.printStudent();
+
+    return 0;
+}
