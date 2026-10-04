@@ -3,65 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>123</title>
+    <title>Задания</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-
         .car-info {
             display: inline-block;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-
-        .car-info img {
-            max-width: 200px;
-            display: block;
-            margin-bottom: 5px;
+            margin-right: 15px;
         }
     </style>
 </head>
 <body>
 
-    <h2>1/</h2>
+    <h2>таск </h2>
     <div class="car-info" id="placeholder1"></div>
     <div class="car-info" id="placeholder2"></div>
     <div class="car-info" id="placeholder3"></div>
 
+    <hr>
+
     <script>
-        function SimpleUser(firstName, lastName) {
+        1 таск
+        document.write("<h3>Задание 1</h3>");
+
+        function User1(firstName, lastName) {
             this.firstName = firstName;
             this.lastName = lastName;
 
             this.show = function () {
-                console.log(this.firstName + " " + this.lastName);
+                document.write(this.firstName + " " + this.lastName + "<br>");
             };
         }
 
-        let user1 = new SimpleUser("Ivan", "Ivanov");
-        let user2 = new SimpleUser("Olga", "Petrova");
+        let user1 = new User1("Ivan", "Ivanov");
+        let user2 = new User1("Olga", "Petrova");
 
         user1.show();
         user2.show();
-     2 таск 
-        function ContactUser(login, email) {
+
+
+       2 таск
+        document.write("<h3>Задание 2</h3>");
+
+        function User2(login, email) {
             this.login = login;
             this.email = email;
 
             this.showContactInfo = function () {
-                console.log("Мой логин " + this.login + ", мой email " + this.email);
+                document.write("Мой логин " + this.login + ", мой email " + this.email + "<br>");
             };
         }
 
-        let contact1 = new ContactUser("admin", "admin@example.com");
-        let contact2 = new ContactUser("user", "user@example.com");
+        let contact1 = new User2("admin", "admin@example.com");
+        let contact2 = new User2("user", "user@example.com");
 
         contact1.showContactInfo();
         contact2.showContactInfo();
-       3 таск 
+
+
+        3 таск
         function Car(image, manufacturer, model, year, VIN) {
             this.image = image;
             this.manufacturer = manufacturer;
@@ -70,29 +72,32 @@
             this.VIN = VIN;
 
             this.showStats = function (element) {
-                element.insertAdjacentHTML("beforeend", `<img src="images/${this.image}" /><br />`);
-                element.insertAdjacentHTML("beforeend", `Производитель: ${this.manufacturer}<br />`);
-                element.insertAdjacentHTML("beforeend", `Модель: ${this.model}<br />`);
-                element.insertAdjacentHTML("beforeend", `Год выпуска: ${this.year}<br />`);
-                element.insertAdjacentHTML("beforeend", `VIN: ${this.VIN}<br />`);
+                element.innerHTML = 
+                    '<img src="images/' + this.image + '"><br>' +
+                    'Производитель: ' + this.manufacturer + '<br>' +
+                    'Модель: ' + this.model + '<br>' +
+                    'Год выпуска: ' + this.year + '<br>' +
+                    'VIN: ' + this.VIN + '<br>';
             };
         }
 
-        // Вызываем конструктор через new
+       
         let car1 = new Car("audi-a6-250.jpg", "Audi", "A6", 2011, "ABCD1234567890XYZ");
         let car2 = new Car("jaguar-x-type-250.jpg", "Jaguar", "X-Type", 2008, "DCAF0987654321XYZ");
         let car3 = new Car("porsche-carrera-911-250.jpg", "Porsce", "Carrera 911", 2011, "EFGH0987654321XYZ");
 
-        let placeholder1 = document.querySelector("#placeholder1");
-        let placeholder2 = document.querySelector("#placeholder2");
-        let placeholder3 = document.querySelector("#placeholder3");
+        let p1 = document.querySelector("#placeholder1");
+        let p2 = document.querySelector("#placeholder2");
+        let p3 = document.querySelector("#placeholder3");
 
-        car1.showStats(placeholder1);
-        car2.showStats(placeholder2);
-        car3.showStats(placeholder3);
+        car1.showStats(p1);
+        car2.showStats(p2);
+        car3.showStats(p3);
 
 
-       4 таск 
+        4 таск
+        document.write("<h3>Задание 4: Прямоугольник</h3>");
+
         function Rect(width, height) {
             this.width = width;
             this.height = height;
@@ -103,13 +108,13 @@
         };
 
         Rect.prototype.getPerimeter = function () {
-            return (this.height + this.width) * 2;
+            return this.height * 2 + this.width * 2;
         };
 
         let rect1 = new Rect(100, 50);
         let rect2 = new Rect(25, 33);
 
-        console.log("rect1 area " + rect1.getArea());
-        console.log("rect1 perimeter " + rect1.getPerimeter());
-        console.log("rect2 area " + rect2.getArea());
-        console.log("rect2 perimeter " + rect2.getPerimeter());
+        document.write("rect1 area " + rect1.getArea() + "<br>");
+        document.write("rect1 perimeter " + rect1.getPerimeter() + "<br>");
+        document.write("rect2 area " + rect2.getArea() + "<br>");
+        document.write("rect2 perimeter " + rect2.getPerimeter() + "<br>");
