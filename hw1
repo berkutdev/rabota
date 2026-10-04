@@ -1,120 +1,115 @@
-#include <iostream>
-#include <string>
-using namespace std;
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>123</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
-class Student
-{
-private:
-    string name;
-    string group;
-    string speciality;
+        .car-info {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
 
-    const int ID;
-    const string adress;
+        .car-info img {
+            max-width: 200px;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
 
-public:
-   
-    Student() : ID(0), adress("")
-    {
-        name = "";
-        group = "";
-        speciality = "";
-    }
+    <h2>1/</h2>
+    <div class="car-info" id="placeholder1"></div>
+    <div class="car-info" id="placeholder2"></div>
+    <div class="car-info" id="placeholder3"></div>
 
-    
-    Student(string n, string g, string s, int id, string a)
-        : ID(id), adress(a)
-    {
-        name = n;
-        group = g;
-        speciality = s;
-    }
+    <script>
+        function SimpleUser(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+
+            this.show = function () {
+                console.log(this.firstName + " " + this.lastName);
+            };
+        }
+
+        let user1 = new SimpleUser("Ivan", "Ivanov");
+        let user2 = new SimpleUser("Olga", "Petrova");
+
+        user1.show();
+        user2.show();
+     2 таск 
+        function ContactUser(login, email) {
+            this.login = login;
+            this.email = email;
+
+            this.showContactInfo = function () {
+                console.log("Мой логин " + this.login + ", мой email " + this.email);
+            };
+        }
+
+        let contact1 = new ContactUser("admin", "admin@example.com");
+        let contact2 = new ContactUser("user", "user@example.com");
+
+        contact1.showContactInfo();
+        contact2.showContactInfo();
+       3 таск 
+        function Car(image, manufacturer, model, year, VIN) {
+            this.image = image;
+            this.manufacturer = manufacturer;
+            this.model = model;
+            this.year = year;
+            this.VIN = VIN;
+
+            this.showStats = function (element) {
+                element.insertAdjacentHTML("beforeend", `<img src="images/${this.image}" /><br />`);
+                element.insertAdjacentHTML("beforeend", `Производитель: ${this.manufacturer}<br />`);
+                element.insertAdjacentHTML("beforeend", `Модель: ${this.model}<br />`);
+                element.insertAdjacentHTML("beforeend", `Год выпуска: ${this.year}<br />`);
+                element.insertAdjacentHTML("beforeend", `VIN: ${this.VIN}<br />`);
+            };
+        }
+
+        // Вызываем конструктор через new
+        let car1 = new Car("audi-a6-250.jpg", "Audi", "A6", 2011, "ABCD1234567890XYZ");
+        let car2 = new Car("jaguar-x-type-250.jpg", "Jaguar", "X-Type", 2008, "DCAF0987654321XYZ");
+        let car3 = new Car("porsche-carrera-911-250.jpg", "Porsce", "Carrera 911", 2011, "EFGH0987654321XYZ");
+
+        let placeholder1 = document.querySelector("#placeholder1");
+        let placeholder2 = document.querySelector("#placeholder2");
+        let placeholder3 = document.querySelector("#placeholder3");
+
+        car1.showStats(placeholder1);
+        car2.showStats(placeholder2);
+        car3.showStats(placeholder3);
 
 
-    string getName()
-    {
-        return name;
-    }
+       4 таск 
+        function Rect(width, height) {
+            this.width = width;
+            this.height = height;
+        }
 
-    string getGroup()
-    {
-        return group;
-    }
+        Rect.prototype.getArea = function () {
+            return this.height * this.width;
+        };
 
-    string getSpeciality()
-    {
-        return speciality;
-    }
+        Rect.prototype.getPerimeter = function () {
+            return (this.height + this.width) * 2;
+        };
 
-    int getID()
-    {
-        return ID;
-    }
+        let rect1 = new Rect(100, 50);
+        let rect2 = new Rect(25, 33);
 
-    string getAdress()
-    {
-        return adress;
-    }
-
-
-    void setName(string n)
-    {
-        name = n;
-    }
-
-    void setGroup(string g)
-    {
-        group = g;
-    }
-
-    void setSpeciality(string s)
-    {
-        speciality = s;
-    }
-
-    
-    void printStudent()
-    {
-        cout << "Name: " << name << endl;
-        cout << "Group: " << group << endl;
-        cout << "Speciality: " << speciality << endl;
-        cout << "ID: " << ID << endl;
-        cout << "Adress: " << adress << endl;
-    }
-
-    
-    void changeGroup(string newGroup)
-    {
-        group = newGroup;
-    }
-};
-
-int main()
-{
-    Student student1;
-
-    Student student2(
-        "",
-        "",
-        "",
-        ,
-        ""
-    );
-
-    cout << "Student 1:" << endl;
-    student1.printStudent();
-
-    cout << endl;
-
-    cout << "Student 2:" << endl;
-    student2.printStudent();
-
-    cout << endl;
-
-    student2.changeGroup("IT-102");
-
-    cout << "After changing group:" << endl;
-    student2.printStudent();
-
-    return 0;
-}
+        console.log("rect1 area " + rect1.getArea());
+        console.log("rect1 perimeter " + rect1.getPerimeter());
+        console.log("rect2 area " + rect2.getArea());
+        console.log("rect2 perimeter " + rect2.getPerimeter());
