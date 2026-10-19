@@ -1,120 +1,53 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задания</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .car-info {
-            display: inline-block;
-            margin-right: 15px;
-        }
-    </style>
-</head>
-<body>
+#include <iostream>
 
-    <h2>таск </h2>
-    <div class="car-info" id="placeholder1"></div>
-    <div class="car-info" id="placeholder2"></div>
-    <div class="car-info" id="placeholder3"></div>
+class Date {
+private:
+    int day;
+    int month;
+    int year;
 
-    <hr>
+public:
+    
+    Date(int d, int m, int y) {
+        day = d;
+        month = m;
+        year = y;
+    }
 
-    <script>
-        1 таск
-        document.write("<h3>Задание 1</h3>");
+    
+    void print() {
+       cout << day << "." << month << "." << year << std::endl;
+    }
 
-        function User1(firstName, lastName) {
-            this.firstName = firstName;
-            this.lastName = lastName;
+    
+  
+    int operator-(const Date& other) {
+        return this->day - other.day;
+    }
 
-            this.show = function () {
-                document.write(this.firstName + " " + this.lastName + "<br>");
-            };
-        }
+    Date operator+(int daysToAdd) {
+        return Date(this->day + daysToAdd, this->month, this->year);
+    }
+};
 
-        let user1 = new User1("Ivan", "Ivanov");
-        let user2 = new User1("Olga", "Petrova");
+int main() {
+    
+    Date d1(10, 5, 2026);
+    Date d2(25, 5, 2026);
 
-        user1.show();
-        user2.show();
+   cout << "data 1: ";
+    d1.print();
 
+    cout << "data 2: ";
+    d2.print();
 
-       2 таск
-        document.write("<h3>Задание 2</h3>");
+    
+    int diff = d2 - d1;
+    std::cout << "raznost d днях: " << diff << std::endl;
 
-        function User2(login, email) {
-            this.login = login;
-            this.email = email;
+    Date d3 = d1 + 5;
+    std::cout << " data 1+5: ";
+    d3.print();
 
-            this.showContactInfo = function () {
-                document.write("Мой логин " + this.login + ", мой email " + this.email + "<br>");
-            };
-        }
-
-        let contact1 = new User2("admin", "admin@example.com");
-        let contact2 = new User2("user", "user@example.com");
-
-        contact1.showContactInfo();
-        contact2.showContactInfo();
-
-
-        3 таск
-        function Car(image, manufacturer, model, year, VIN) {
-            this.image = image;
-            this.manufacturer = manufacturer;
-            this.model = model;
-            this.year = year;
-            this.VIN = VIN;
-
-            this.showStats = function (element) {
-                element.innerHTML = 
-                    '<img src="images/' + this.image + '"><br>' +
-                    'Производитель: ' + this.manufacturer + '<br>' +
-                    'Модель: ' + this.model + '<br>' +
-                    'Год выпуска: ' + this.year + '<br>' +
-                    'VIN: ' + this.VIN + '<br>';
-            };
-        }
-
-       
-        let car1 = new Car("audi-a6-250.jpg", "Audi", "A6", 2011, "ABCD1234567890XYZ");
-        let car2 = new Car("jaguar-x-type-250.jpg", "Jaguar", "X-Type", 2008, "DCAF0987654321XYZ");
-        let car3 = new Car("porsche-carrera-911-250.jpg", "Porsce", "Carrera 911", 2011, "EFGH0987654321XYZ");
-
-        let p1 = document.querySelector("#placeholder1");
-        let p2 = document.querySelector("#placeholder2");
-        let p3 = document.querySelector("#placeholder3");
-
-        car1.showStats(p1);
-        car2.showStats(p2);
-        car3.showStats(p3);
-
-
-        4 таск
-        document.write("<h3>Задание 4: Прямоугольник</h3>");
-
-        function Rect(width, height) {
-            this.width = width;
-            this.height = height;
-        }
-
-        Rect.prototype.getArea = function () {
-            return this.height * this.width;
-        };
-
-        Rect.prototype.getPerimeter = function () {
-            return this.height * 2 + this.width * 2;
-        };
-
-        let rect1 = new Rect(100, 50);
-        let rect2 = new Rect(25, 33);
-
-        document.write("rect1 area " + rect1.getArea() + "<br>");
-        document.write("rect1 perimeter " + rect1.getPerimeter() + "<br>");
-        document.write("rect2 area " + rect2.getArea() + "<br>");
-        document.write("rect2 perimeter " + rect2.getPerimeter() + "<br>");
+    return 0;
+}
