@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>StudentCard</title>
+</head>
+<body>
+
+  <script>
+    class StudentCard {
+      constructor(name, age, faculty, year, photo) {
+        this.name = name;
+        this.age = age;
+        this._faculty = faculty;
+        this.year = year;
+        this.photo = photo;
+      }
+
+      
+      get faculty() {
+        return this._faculty;
+      }
+
+     
+      set faculty(newFaculty) {
+        if (newFaculty) {
+          this._faculty = newFaculty;
+        }
+      }
+
+      
+      introduce() {
+        console.log("student " + this.name + ", " + this.age + " years, faculty " + this.faculty + ", kurs " + this.year + ".");
+      }
+
+      
+      updateYear() {
+        this.year = this.year + 1;
+        this.graduate();
+      }
+
+      
+      graduate() {
+        if (this.year > 4) {
+          console.log("student " + this.name + " graduated");
+        }
+      }
+    }
+
+    
+    const student1 = new StudentCard("Arsen", 20, "сomputer sience", 2, photo");
+    const student2 = new StudentCard("Anya", 22, "economy", 4, "photo");
+
+    
+    student1.introduce();
+
+    
+    console.log("current faculty: " + student1.faculty);
+    student1.faculty = "program engeener";
+    console.log("new faculty: " + student1.faculty);
+
+    
+    student2.updateYear(); 
+  </script>
+
+</body>
+</html>
