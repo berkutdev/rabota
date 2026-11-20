@@ -1,0 +1,84 @@
+
+#include <iostream>
+using namespace std;
+
+//1
+class Student
+{
+public:
+    string name;
+    int age;
+
+    void Show()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+class Aspirant : public Student
+{
+public:
+    string work;
+
+    void Show()
+    {
+        Student::Show();
+        cout << "Work: " << work << endl;
+    }
+};
+
+//2
+class Passport
+{
+public:
+    string name;
+    string number;
+    string date;
+
+    void Show()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Number: " << number << endl;
+        cout << "Date: " << date << endl;
+    }
+};
+
+class ForeignPassport : public Passport
+{
+public:
+    string foreignNumber;
+    string visa;
+
+    void Show()
+    {
+        Passport::Show();
+        cout << "Foreign number: " << foreignNumber << endl;
+        cout << "Visa: " << visa << endl;
+    }
+};
+
+int main()
+{
+    Aspirant a;
+    a.name = "Nikolay";
+    a.age = 18;
+    a.work = "Programming";
+
+    cout << "ASPIRANT" << endl;
+    a.Show();
+
+    cout << endl;
+
+    ForeignPassport p;
+    p.name = "Nikolay";
+    p.number = "123456";
+    p.date = "00.00.0000";
+    p.foreignNumber = "123456";
+    p.visa = "Ukr";
+
+    cout << "forg pass" << endl;
+    p.Show();
+
+    return 0;
+}
