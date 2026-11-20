@@ -1,0 +1,134 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+class Vehicle {
+protected:
+    string name;
+    int maxSpeed;
+    double fuel;
+    int wheels;
+    int passengers;
+
+public:
+    virtual ~Vehicle() {}
+
+    virtual void Print() {
+        cout << "cars: " << name << endl;
+    }
+
+   
+    virtual void ShowMaxSpeed() = 0;
+    virtual void ShowFuel() = 0;
+    virtual void ShowWheels() = 0;
+    virtual void ShowPassengers() = 0;
+};
+
+
+class Car : public Vehicle {
+public:
+    Car(string n, int speed, double f, int w, int p) {
+        name = n;
+        maxSpeed = speed;
+        fuel = f;
+        wheels = w;
+        passengers = p;
+    }
+
+    void Print() override {
+        cout << "Машина: " << name << endl;
+    }
+
+    void ShowMaxSpeed() override {
+        cout << "Макс. скорость: " << maxSpeed << " км/ч" << endl;
+    }
+
+    void ShowFuel() override {
+        cout << "Расход топлива: " << fuel << " л/100 км" << endl;
+    }
+
+    void ShowWheels() override {
+        cout << "Колес: " << wheels << endl;
+    }
+
+    void ShowPassengers() override {
+        cout << "Пассажиров: " << passengers << endl;
+    }
+};
+
+
+class Moto : public Vehicle {
+public:
+    Moto(string n, int speed, double f, int w, int p) {
+        name = n;
+        maxSpeed = speed;
+        fuel = f;
+        wheels = w;
+        passengers = p;
+    }
+
+    void Print() override {
+        cout << "Мотоцикл: " << name << endl;
+    }
+
+    void ShowMaxSpeed() override {
+        cout << "Макс. скорость: " << maxSpeed << " км/ч" << endl;
+    }
+
+    void ShowFuel() override {
+        cout << "Расход топлива: " << fuel << " л/100 км" << endl;
+    }
+
+    void ShowWheels() override {
+        cout << "Колес: " << wheels << endl;
+    }
+
+    void ShowPassengers() override {
+        cout << "Пассажиров: " << passengers << endl;
+    }
+};
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    int type;
+    cout << "1 - Машина, 2 - Мотоцикл: ";
+    cin >> type;
+
+    string name;
+    int speed, wheels, passengers;
+    double fuel;
+
+    cout << "Название: ";
+    cin >> name;
+    cout << "Макс. скорость: ";
+    cin >> speed;
+    cout << "Расход топлива: ";
+    cin >> fuel;
+    cout << "Кол-во колес: ";
+    cin >> wheels;
+    cout << "Кол-во пассажиров: ";
+    cin >> passengers;
+
+    Vehicle* ptr = nullptr;
+
+    if (type == 1) {
+        ptr = new Car(name, speed, fuel, wheels, passengers);
+    } else if (type == 2) {
+        ptr = new Moto(name, speed, fuel, wheels, passengers);
+    } else {
+        cout << "error" << endl;
+        return 0;
+    }
+
+    ptr->Print();
+    ptr->ShowMaxSpeed();
+    ptr->ShowFuel();
+    ptr->ShowWheels();
+    ptr->ShowPassengers();
+
+    delete ptr;
+    return 0;
+}
