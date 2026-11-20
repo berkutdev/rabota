@@ -1,0 +1,97 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+class Student
+{
+    string name;
+    string surname;
+    string university;
+    int age;
+
+public:
+    Student() {}
+
+    Student(string n, string sur, string un, int a)
+    {
+        name = n;
+        surname = sur;
+        university = un;
+        age = a;
+    }
+
+    void Init() // ввод с клавиатуры
+    {
+        cout << "Имя: ";
+        cin >> name;
+        cout << "Фамилия: ";
+        cin >> surname;
+        cout << "Университет: ";
+        cin >> university;
+        cout << "Возраст: ";
+        cin >> age;
+    }
+
+    void Print()  
+    {
+        cout << name << " " << surname << ", " << university << ", возраст: " << age << endl;
+    }
+
+    void WriteFile(string filename) , ios::app
+    {
+        ofstream out(filename, ios::app);
+        if (!out.is_open())
+        {
+            cout << "error" << endl;
+            return;
+        }
+
+        out << name << " " << surname << " " << university << " " << age << endl;
+        out.close();
+    }
+
+    static void ReadFile(string filename) // чтение из файла
+    {
+        ifstream in(filename);
+        if (!in.is_open())
+        {
+            cout << "Ошибка открытия файла для чтения!" << endl;
+            return;
+        }
+
+        string n, sur, un;
+        int a;
+
+        while (in >> n >> sur >> un >> a)
+        {
+            Student temp(n, sur, un, a);
+            temp.Print();
+        }
+
+        in.close();
+    }
+};
+
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+
+    const int SIZE = 5;
+    string filename = "students.txt";
+    Student students[SIZE];
+
+    
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << "\n--- student " << i + 1 << " ---" << endl;
+        students[i].Init();
+        students[i].WriteFile(filename);
+    }
+
+    
+    cout << "\n--- read file ---" << endl;
+    Student::ReadFile(filename);
+
+    return 0;
+}
